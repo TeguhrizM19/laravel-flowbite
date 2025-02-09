@@ -21,11 +21,15 @@
       </button>
    </div>
 
+   @php
+    $userRole = Auth::user()->role;
+   @endphp
+
    {{-- Sidebar Menu --}}
    <div class="py-4 overflow-y-auto">
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="/"
+            <a href="/dashboard"
                class="flex items-center p-2 rounded-lg hover:bg-gray-100 group {{ request()->is('/') ? 'bg-white text-[#099AA7]' : 'text-white' }}">
                <svg class="w-5 h-5 transition duration-75 group-hover:text-[#099AA7]" aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -44,6 +48,8 @@
                <span class="ms-3 whitespace-nowrap group-hover:text-[#099AA7]">Order</span>
             </a>
          </li>
+         
+         @if ($userRole == 'operator' || $userRole == 'keuangan')
          <li>
             <a href="/harga"
                class="flex items-center p-2 rounded-lg hover:bg-gray-100 group {{ request()->is('/harga') ? 'bg-white text-[#099AA7]' : 'text-white' }}">
@@ -54,6 +60,9 @@
                <span class="ms-3 whitespace-nowrap group-hover:text-[#099AA7]">Harga</span>
             </a>
          </li>
+         @endif
+
+         @if ($userRole == 'operator')
          <li>
             <a href="/stock"
                class="flex items-center p-2 rounded-lg hover:bg-gray-100 group {{ request()->is('stock') ? 'bg-white text-[#099AA7]' : 'text-white' }}">
@@ -66,6 +75,7 @@
                <span class="ms-3 whitespace-nowrap group-hover:text-[#099AA7]">Stock</span>
             </a>
          </li>
+         @endif
 
          {{-- Master --}}
          <li>

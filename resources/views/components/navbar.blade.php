@@ -48,21 +48,21 @@
                    id="user-dropdown">
                    <div class="px-4 py-3">
                        <span
-                           class="block text-sm font-bold text-gray-900 truncate uppercase">Nama
-                           {{-- {{ Auth::user()->nama }} --}}
+                           class="block text-sm font-bold text-gray-900 truncate uppercase">
+                           {{ Auth::user()->name }}
                        </span>
                        <span
-                           class="block text-sm font-semibold text-gray-500 truncate uppercase">Level
-                           {{-- {{ Auth::user()->level }} --}}
+                           class="block text-sm font-semibold text-gray-500 truncate uppercase">
+                           {{ Auth::user()->role }}
                        </span>
                    </div>
 
                    <ul class="py-2" aria-labelledby="user-menu-button">
                        <li>
-                           <form action="/logout" id="logout" method="POST" class="w-full">@csrf @method('DELETE')
+                           <form action="/logout" id="logout" method="POST" class="w-full">
+                              @csrf
                                <button type="submit"
-                                   class="w-full text-start block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300">Sign
-                                   out</button>
+                                   class="w-full text-start block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300">Sign out</button>
                            </form>
                        </li>
                    </ul>
